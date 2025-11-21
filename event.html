@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Danh sách sự kiện — TDStudio</title>
+<style>
+  :root{
+    --bg-1:#041022;
+    --bg-2:#061028;
+    --card:#0b2033;
+    --muted:#8fa3b8;
+    --accent:#63c7ff;
+    --radius:12px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    color-scheme: dark;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 70%);
+    color:#eaf6ff;
+    padding:18px;
+  }
+
+  .wrap{ max-width:980px; margin:0 auto; }
+
+  header{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .logo{ width:56px; height:56px; border-radius:10px; background:linear-gradient(135deg,#7a5aff,#63c7ff); display:flex; align-items:center; justify-content:center; font-weight:800; color:#021225; flex-shrink:0; }
+  h1{ font-size:17px; margin:0; font-weight:800; }
+  p.lead{ font-size:12px; margin:4px 0 0 0; color:var(--muted); }
+
+  /* list */
+  .list{ display:flex; flex-direction:column; gap:10px; }
+
+  /* card - giảm chiều cao, padding nhỏ */
+  .card{
+    display:flex;
+    gap:12px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    border-radius:var(--radius);
+    padding:10px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.45);
+    transition: transform .12s ease;
+    align-items:stretch; /* make thumb fill height */
+    min-height:88px;    /* giảm so với trước */
+    overflow:hidden;
+  }
+  .card:hover{ transform:translateY(-3px); }
+
+  /* thumb vừa khít chiều cao thẻ (min-height - padding) */
+  .thumb{
+    width:84px;
+    flex:0 0 84px;
+    border-radius:10px;
+    background:#082234;
+    background-size:cover;
+    background-position:center;
+    align-self:stretch; /* chiếm toàn chiều cao nội dung */
+    box-shadow:0 6px 12px rgba(0,0,0,0.45);
+  }
+
+  .body{ flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; }
+
+  /* Tiêu đề 1 dòng, nhỏ */
+  .title{
+    font-size:13px;
+    font-weight:800;
+    margin:0 0 6px 0;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  /* Mô tả 1 dòng, nhỏ, mờ */
+  .desc{
+    font-size:12px;
+    color:var(--muted);
+    margin:0;
+    line-height:1.1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+.logo img {
+    width: 50px;      /* chỉnh kích thước theo ý bạn */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px; /* nếu muốn bo góc */
+}
+  /* lượt xem nhỏ gọn, nằm bên phải dưới (dạng text) */
+  .meta{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:6px;
+  }
+  .views{
+    font-size:11px;
+    color:var(--muted);
+    font-weight:500;
+  }
+
+  a.card-link{ display:flex; gap:12px; align-items:stretch; text-decoration:none; color:inherit; width:100%; }
+
+  /* responsive - mobile nhỏ hơn */
+  @media (max-width:520px){
+    html,body{ padding:14px; }
+    .thumb{ width:72px; flex:0 0 72px; }
+    .card{ min-height:76px; padding:8px; gap:10px; }
+    .title{ font-size:12px; }
+    .desc{ font-size:11px; }
+    .views{ font-size:10px; }
+  }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+    <img src="https://thanhdi.com/images/logo.png" alt="TD Logo">
+</div>
+      <div>
+        <h1>Danh sách sự kiện - TDStudio</h1>
+        <p class="lead">Thường xuyên ghé để theo dõi sự kiện nhé.</p>
+      </div>
+    </header>
+
+    <main class="list" id="postsList">
+
+      <!-- MẪU (admin copy & paste, đổi data-id, href, background-image, title, desc) -->
+
+      <article class="card" data-id="post-open-server">
+        <a class="card-link" data-link href="https://www.facebook.com/share/p/17wDrc3XDm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          <div class="thumb" style="background-image:url('https://i.postimg.cc/tCFktnQc/IMG-7532.jpg')"></div>
+          <div class="body">
+            <div class="title">Tương tác Fanpage - Nhận coin hàng tuần</div>
+            <div class="desc">Theo dõi và tương tác với các Fanpage.</div>
+            <div class="meta"><div class="views">lượt xem: <span data-count>0</span></div></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="card" data-id="post-event-2011">
+        <a class="card-link" data-link href="https://www.facebook.com/share/p/17ffUfHXN1/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          <div class="thumb" style="background-image:url('https://i.postimg.cc/8kHBjmT6/IMG-7530.jpg')"></div>
+          <div class="body">
+            <div class="title">Sự Kiện 20 tháng 11 - Nhà Giáo Việt Nam</div>
+            <div class="desc">Giftcode sự kiện trên ảnh, Theo dõi fanpage.</div>
+            <div class="meta"><div class="views">lượt xem: <span data-count>1</span></div></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="card" data-id="post-minigame">
+        <a class="card-link" data-link href="https://youtube.com/shorts/-Wi1UxGJ3Zo?si=lt7brl66y-__SzLM" target="_blank" rel="noopener noreferrer">
+          <div class="thumb" style="background-image:url('https://img.pikbest.com/png-images/qianku/q-version-cartoon-hand-painted-bow-gift-box-decoration-pattern_2032502.png!f305cw')"></div>
+          <div class="body">
+            <div class="title">Hướng dẫn lấy Giftcode sự kiện - Tương tác</div>
+            <div class="desc">Tham gia quay may mắn để nhận phần thưởng.</div>
+            <div class="meta"><div class="views">lượt xem: <span data-count>1</span></div></div>
+          </div>
+        </a>
+      </article>
+
+      <!-- copy thêm bài ở đây -->
+
+    </main>
+  </div>
+
+<script>
+/* view counter (mỗi trình duyệt 1 lượt / bài) */
+const VIEWS_KEY = 'td_events_views_v5';
+const VIEWED_KEY = 'td_events_viewed_v5';
+
+function loadViews(){ try{ return JSON.parse(localStorage.getItem(VIEWS_KEY) || '{}'); }catch(e){ return {}; } }
+function saveViews(v){ localStorage.setItem(VIEWS_KEY, JSON.stringify(v)); }
+function loadViewed(){ try{ return JSON.parse(localStorage.getItem(VIEWED_KEY) || '[]'); }catch(e){ return []; } }
+function saveViewed(a){ localStorage.setItem(VIEWED_KEY, JSON.stringify(a)); }
+
+function updateCounts(){
+  const views = loadViews();
+  document.querySelectorAll('[data-count]').forEach(span=>{
+    const card = span.closest('.card');
+    if(!card) return;
+    const id = card.getAttribute('data-id');
+    span.textContent = (views[id] || 0).toLocaleString();
+  });
+}
+
+document.getElementById('postsList').addEventListener('click', function(ev){
+  const a = ev.target.closest('a[data-link]');
+  if(!a) return;
+  const card = a.closest('.card');
+  if(!card) return;
+  const id = card.getAttribute('data-id');
+  if(!id) return;
+  const viewed = loadViewed();
+  if(!viewed.includes(id)){
+    const views = loadViews();
+    views[id] = (views[id] || 0) + 1;
+    saveViews(views);
+    viewed.push(id);
+    saveViewed(viewed);
+    updateCounts();
+  }
+  // mở link bình thường (target _blank)
+});
+
+updateCounts();
+</script>
+</body>
+</html>
